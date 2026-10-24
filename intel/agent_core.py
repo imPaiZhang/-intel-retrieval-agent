@@ -1,5 +1,5 @@
 """情报库检索 Agent（v3）：主 Agent 只有 search_news + task；search_news 带别名扩展、时间窗、评分排序、同标题去重。
-模型走兼容 OpenAI 接口的三个环境变量；沙盒里默认用排长存好的 MiniMax（Key 由网关注入）。"""
+模型走兼容 OpenAI 接口的三个环境变量；默认 MiniMax 国内站，Key 自己设。"""
 import os, re, pathlib
 from langchain_core.tools import tool
 from langchain.agents.middleware import AgentMiddleware
@@ -14,7 +14,7 @@ backend = FilesystemBackend(root_dir=HERE, virtual_mode=True)
 NEWS_DAYS, MAX_HITS = None, 6
 os.environ.setdefault("LLM_BASE_URL", "https://api.minimaxi.com/v1")
 os.environ.setdefault("LLM_MODEL", "MiniMax-M3.1-Flash")
-os.environ.setdefault("LLM_API_KEY", "injected-by-gateway")
+os.environ.setdefault("LLM_API_KEY", "")  # 请自行设置 LLM_API_KEY
 
 
 def load_model():
