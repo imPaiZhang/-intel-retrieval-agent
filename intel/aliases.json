@@ -1,0 +1,33 @@
+{
+  "_说明": "同一组里任意一个词命中都算命中。新增别名直接往组里加，或新增一组。大小写不敏感。",
+  "groups": [
+    ["可灵", "Kling", "快手可灵"],
+    ["即梦", "Jimeng", "Dreamina"],
+    ["Seedance", "即梦视频"],
+    ["豆包", "Doubao", "火山引擎", "Volcengine"],
+    ["Kimi", "月之暗面", "Moonshot"],
+    ["通义", "千问", "Qwen", "阿里云百炼"],
+    ["DeepSeek", "深度求索"],
+    ["MiniMax", "海螺", "Hailuo", "稀宇"],
+    ["智谱", "GLM", "Zhipu", "Z.ai"],
+    ["混元", "Hunyuan", "腾讯混元"],
+    ["文心", "ERNIE", "百度文心"],
+    ["阶跃", "StepFun", "Step-"],
+    ["Claude", "Anthropic"],
+    ["GPT", "OpenAI", "ChatGPT"],
+    ["Sora", "OpenAI 视频"],
+    ["Gemini", "谷歌", "Google DeepMind", "DeepMind"],
+    ["Veo", "谷歌视频"],
+    ["Llama", "Meta AI"],
+    ["Grok", "xAI"],
+    ["Midjourney", "MJ"],
+    ["Runway", "Gen-4"],
+    ["Suno", "Suno AI"],
+    ["LangChain", "LangGraph", "deepagents", "Deep Agents"],
+    ["智能体", "Agent", "agentic"],
+    ["多模态", "multimodal"],
+    ["开源", "open source", "open-source", "开放权重", "open weights"],
+    ["英伟达", "NVIDIA", "Nvidia"],
+    ["具身智能", "embodied", "人形机器人", "humanoid"]
+  ]
+}
