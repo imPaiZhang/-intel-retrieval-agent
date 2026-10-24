@@ -53,3 +53,5 @@ AGENT_MOD=agent_v2 uv run python run_real.py "这周可灵 4.0 开放了哪些�
 - Deep Agents 文档：https://docs.langchain.com/oss/python/deepagents/overview
 
 文章中的 LangChain 截图版权归原作者所有，仅作引用说明。
+
+仓库地址：https://github.com/imPaiZhang/-intel-retrieval-agent

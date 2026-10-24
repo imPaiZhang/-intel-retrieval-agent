@@ -420,5 +420,5 @@ Tool result too large, the result of this tool call d1 was saved in the filesyst
 - Deep Agents RAG 指南：https://docs.langchain.com/oss/python/deepagents/rag
 - deepagents 0.7.32 源码 middleware/filesystem.py（NUM_CHARS_PER_TOKEN、TOOLS_EXCLUDED_FROM_EVICTION、tool_token_limit_before_evict）
 - MiniMax 定价概览：https://platform.minimaxi.com/docs/pricing/overview
-- 代码与测试脚本：【待排长补：代码仓库或网盘链接】
+- 代码与测试脚本：https://github.com/imPaiZhang/-intel-retrieval-agent
 - 实测环境：Python 3.12，deepagents 0.7.32，token 数用 tiktoken（o200k_base）估算
