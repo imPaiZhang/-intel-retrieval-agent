@@ -10,7 +10,7 @@ p.add_argument("--fade", type=float, default=0.3, help="交叉淡化秒数")
 p.add_argument("--bar-align", action="store_true", help="把京剧补齐到整小节，让后段鼓点回到原来的拍子相位")
 a = p.parse_args()
 
-# 1. 读音频，统一采样率和声道（Suno 导出 48k，手机录音常见 24k/44.1k）
+# 1. 读音频，统一采样率和声道（本例 Suno 导出 48k，京剧那段是 24k）
 inst, sr = librosa.load(a.inst, sr=None, mono=False)
 opera, _ = librosa.load(a.opera, sr=sr, mono=False)          # 重采样到伴奏的采样率
 if inst.ndim == 1: inst = np.stack([inst, inst])
@@ -57,7 +57,8 @@ if a.bar_align:
 
 # 5. 插入（不是覆盖）：前段 + 京剧 + 后段，两个接口各做等功率交叉淡化
 f = int(a.fade * sr); c = int(cut * sr)
-fin = np.sin(np.linspace(0, np.pi/2, f))**2; fout = 1 - fin   # 等功率曲线（sin²+cos²=1）
+th = np.linspace(0, np.pi/2, f)
+fin, fout = np.sin(th), np.cos(th)                          # 等功率曲线：sin²+cos²=1，接口处总能量不塌
 head, tail = inst[:, :c], inst[:, c:]
 j1 = head[:, -f:]*fout + opera[:, :f]*fin
 j2 = opera[:, -f:]*fout + tail[:, :f]*fin
