@@ -1,5 +1,5 @@
 """把一段真人京剧插进 Suno 纯音乐：找插入点 → 对齐拍点 → 响度对齐 → 交叉淡化插入。
-用法：python3 splice.py inst.mp3 opera.mp3 out.wav [--near 秒数]
+用法：python3 splice.py inst.mp3 opera.mp3 out.wav [--near 秒数] [--bar-align] [--fade 0.3]
 依赖：pip install librosa soundfile pyloudnorm（另需系统装 ffmpeg 读 mp3）"""
 import sys, argparse, numpy as np, librosa, soundfile as sf, pyloudnorm as pyln
 
@@ -52,7 +52,9 @@ if a.bar_align:
     ins = opera.shape[1]/sr - 2*a.fade
     target = np.ceil(ins / bar) * bar
     pad = int(round((target - ins) * sr))
-    opera = np.concatenate([opera, np.zeros((2, pad))], axis=1)   # 末尾补一点空白，让京剧尾音自然收
+    tail_f = int(0.03 * sr)                                    # 补空白前先给唱段最后 30ms 做淡出，防止截断处咔哒
+    opera[:, -tail_f:] *= np.linspace(1, 0, tail_f)
+    opera = np.concatenate([opera, np.zeros((2, pad))], axis=1)   # 末尾补空白，凑满整小节
     print(f"插入 {ins:.2f}s = {ins/bar:.2f} 小节 → 补到 {target/bar:.0f} 小节，尾部补 {pad/sr:.2f}s")
 
 # 5. 插入（不是覆盖）：前段 + 京剧 + 后段，两个接口各做等功率交叉淡化
